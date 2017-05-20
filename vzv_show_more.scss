@@ -1,0 +1,26 @@
+/*
+ * @ author ( Zikiy Vadim )
+ * @ site http://online-services.org.ua
+ * @ vzv Show More Plugin styles
+ * @ copyright Copyright (C) 2016 All rights reserved.
+*/
+
+.vzv_show_more{
+
+  .vzv_sm_content{
+    display: none;
+    &.vzv_sm_content_show{
+      display: block;
+    }
+  }
+
+  .vzv_sm_btn{
+    display: inline-block;
+    cursor: pointer;
+
+      &.vzv_sm_btn_hide{
+        display: none  !important;
+      }
+  }
+
+}
