@@ -8,10 +8,10 @@
 
 (function ($) {
     $.fn.vzv_show_more = function (options) {
-        //console.log('options');
-        //console.log(options);
-        //console.log('search_clock|this');
-        //console.log(this);
+        // console.log('options');
+        // console.log(options);
+        // console.log('this');
+        // console.log(this);
 
         if( !(this instanceof $) || (!this.length) ){
             console.error('Error! Not find content element');
@@ -24,9 +24,10 @@
             id: 'vzv_show_more',
             main_content_class: 'vzv_show_more_content',
             main_class: 'vzv_show_more',
-            show_btn_class: 'vzv_sm_show_btn',
-            hide_btn_class: 'vzv_sm_hide_btn',
+            show_btn_class: 'vzv_sm_show',
+            hide_btn_class: 'vzv_sm_hide',
             controls_class: 'vzv_sm_control',
+            btn_class: 'vzv_sm_btn',
         };
 
         //Настройки плагина по умолчанию, можно перекрыть
@@ -38,36 +39,43 @@
             control_btn_class: '',
             duration: 400,
             // auto: true,
-        }, options, _settings);
+        }, options);
 
-        //Скрываем контент
-        $content_block.hide();
-        //Обертка
-        $content_block.wrap($('<div></div>').addClass(default_settings.main_class));
-        //Разметка управления
-        $('.'+default_settings.main_class).append(
-            $('<div></div>').addClass(default_settings.controls_class)
-                .css({
-                    'text-align': default_settings.controls_align,
-                })
-                .append(
-                    $('<'+default_settings.control_btn_tag+'>'+default_settings.show_btn_text+'</'+default_settings.control_btn_tag+'>')
-                        .addClass(default_settings.show_btn_class + ' ' + default_settings.control_btn_class)
-                        .css({
-                            cursor: 'pointer',
-                        })
-                )
-        );
+        $content_block.each(function(){
+            var $content_item = $(this);
+            //Скрываем контент
+            $content_item.hide();
+            //Обертка
+            $content_item.wrap($('<div></div>').addClass(_settings.main_class));
+            //Разметка управления
+            $content_item.parent('.'+_settings.main_class).append(
+                $('<div></div>').addClass(_settings.controls_class)
+                    .css({
+                        'text-align': default_settings.controls_align,
+                    })
+                    .append(
+                        $('<'+default_settings.control_btn_tag+'>'+default_settings.show_btn_text+'</'+default_settings.control_btn_tag+'>')
+                            .addClass( _settings.btn_class + ' ' + _settings.show_btn_class + ' ' + default_settings.control_btn_class)
+                            .css({
+                                cursor: 'pointer',
+                            })
+                    )
+            );
+        });
 
+        // В случае множественного использованием скрипта на одной странице
+        $('.'+_settings.btn_class).off('click');
         //Обработка клика по кнопкам
-        $('.'+default_settings.controls_class+' '+default_settings.control_btn_tag).on('click',function(){
-            if($(this).hasClass(default_settings.show_btn_class)){
+        $('.'+_settings.btn_class).on('click',function(){
+            if($(this).hasClass(_settings.show_btn_class)){
                 $(this).text(default_settings.hide_btn_text);
             }else{
                 $(this).text(default_settings.show_btn_text);
             }
-            $content_block.slideToggle(default_settings.duration);
-            $(this).toggleClass(default_settings.show_btn_class +' '+ default_settings.hide_btn_class);
+            $(this).parent('.'+_settings.controls_class)
+                    .prev()
+                    .slideToggle(default_settings.duration);
+            $(this).toggleClass(_settings.show_btn_class +' '+ _settings.hide_btn_class);
         });
 
         // if(default_settings.auto === true){
@@ -77,5 +85,6 @@
         // }
 
         return $content_block;
+
     };
 })(jQuery);

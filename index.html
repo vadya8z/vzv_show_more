@@ -2,33 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="vzv_show_more.css">
+    <title>vzv_show_more</title>
+    <!--<link rel="stylesheet" href="vzv_show_more.css">-->
 </head>
 <body>
 
-<div id="content" class="vzv_show_more_content">
-    Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content
+<p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+<p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+<div id="content">
+    <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+
+    <div class="vzv_show_more_content">
+        <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+    </div>
+
+    <div class="vzv_show_more_content">
+        <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+
+        <div class="vzv_show_more_content">
+            <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+        </div>
+
+        <div class="vzv_show_more_content">
+            <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+        </div>
+    </div>
 </div>
 <div class="vzv_show_more_content">
-    Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content
+    <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+    <p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
 </div>
 
+<p>Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content</p>
+<!--<div class="vdz_show_more" style="display: none;">-->
+    <!--<div class="vdz_sm_content" data-vdz_effect_duration="">-->
+        <!--Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content-->
+    <!--</div>-->
 
-<div class="vdz_show_more" style="display: none;">
-    <div class="vdz_sm_content" data-vdz_effect_duration="">
-        Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content
-    </div>
+    <!--<div class="vdz_sm_control">-->
+        <!--<span class="vdz_sm_btn vdz_sm_show">SHOW</span>-->
+        <!--<span class="vdz_sm_btn vdz_sm_hide vdz_sm_btn_hide">HIDE</span>-->
+    <!--</div>-->
+<!--</div>-->
 
-    <div class="vdz_sm_control">
-        <span class="vdz_sm_btn vdz_sm_show">SHOW</span>
-        <span class="vdz_sm_btn vdz_sm_hide vdz_sm_btn_hide">HIDE</span>
-    </div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!--<script src="vzv_show_more.js"></script>-->
-<script src="vzv_show_more.min.js"></script>
+<script src="jquery.2.2.4.min.js"></script>
+<script src="vzv_show_more.js"></script>
+<!--<script src="vzv_show_more.min.js"></script>-->
 <script>
     (function ($) {
         $(document).ready(function () {
@@ -36,6 +55,7 @@
                 controls_align: 'center',
                 control_btn_tag: 'button',
             });
+            $('.vzv_show_more_content').vzv_show_more();
         });
     })(jQuery);
 </script>
